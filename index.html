@@ -1,0 +1,41 @@
+<script>
+
+	function draw() {
+		  var ctx = canvas.getContext('2d');
+
+		  ctx.fillStyle = "#000";
+		  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+		  var cx = canvas.width * 0.5,
+		  	  cy = canvas.height * 0.5;
+
+		  var x = y = -10,
+		  	  w = h = 10,
+		  	  deg = 0,
+		  	  ratio = Math.random() * 0.1,
+		  	  limit = 100;
+
+		  ctx.strokeStyle= "#fff";
+
+		  for(i=0; i < limit; i++) {
+  
+			  x = x + (i * ratio * Math.cos(ratio));
+			  y = y + (i * ratio * Math.sin(ratio));
+			  
+			  w = w + (ratio * i) * 0.5;
+			  h = h + (ratio * i) * 0.5;
+			  
+			  ctx.save();
+			  ctx.translate(cx, cy);
+			  ctx.rotate(deg * Math.PI/180);
+			  ctx.strokeRect(x,y,w,h);    
+			  ctx.restore();
+			    
+			  deg += 15;
+
+		}
+
+	}
+</script>
+<body onload="draw();" style="background: black;">
+  <canvas id="canvas" width=960 height=480></canvas>
